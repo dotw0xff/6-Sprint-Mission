@@ -3,8 +3,24 @@ import { Link } from "react-router-dom";
 import "./auth.css";
 import Logo from "../../assets/images/logo/logo.svg";
 import HideIcon from "../../assets/images/icons/eye-invisible.svg"
+import { Controller, useForm } from "react-hook-form";
 
 function LoginPage() {
+  const {
+    control,
+    handleSubmit,
+  } = useForm({
+    mode: "onChange",
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+
+  const onSubmit = (data) => {
+    console.log(JSON.stringify(data));
+  }
+
   return (
     <div className="auth-container">
       <Link to="/" className="logo-home-link" aria-label="홈으로 이동">
@@ -14,53 +30,83 @@ function LoginPage() {
         />
       </Link>
 
-      <form id="loginForm" method="post">
-        <div className="input-item">
-          <label htmlFor="email">이메일</label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            placeholder="이메일을 입력해 주세요"
-            required
-          />
-          <span id="emailEmptyError" className="error-message"
-            >이메일을 입력해 주세요</span
-          >
-          <span id="emailInvalidError" className="error-message"
-            >잘못된 이메일 형식입니다</span
-          >
-        </div>
+      <form id="loginForm" onSubmit={handleSubmit(onSubmit)}>
+        <Controller
+          name="email"
+          control={control}
+          rules={{
+            required: "이메일을 입력해주세요",
+            pattern: {
+              value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+              message: "잘못된 이메일 형식입니다."
+            }
+          }}
+          render = {({ field: { value, onChange }, fieldState: { error } }) => {
+            return (
+              <div className="input-item">
+                <label htmlFor="email">이메일</label>
+                <input
+                  id="email"
+                  name="email"
+                  placeholder="이메일을 입력해주세요"
+                  value={value}
+                  onChange={onChange}
+                />
 
-        <div className="input-item">
-          <label htmlFor="password">비밀번호</label>
-          <div className="input-wrapper">
-            <input
-              id="password"
-              name="password"
-              type="password"
-              placeholder="비밀번호를 입력해 주세요"
-              required
-            />
-            <button
-              type="button"
-              className="password-toggle-button"
-              aria-label="비밀번호 보기"
-            >
-              <img
-                className="password-toggle-icon"
-                src={HideIcon}
-                alt="비밀번호 숨김 상태 아이콘"
-              />
-            </button>
-          </div>
-          <span id="passwordEmptyError" className="error-message"
-            >비밀번호를 입력해 주세요</span
-          >
-          <span id="passwordInvalidError" className="error-message"
-            >비밀번호를 8자 이상 입력해 주세요</span
-          >
-        </div>
+                { error && 
+                  <span className="error-message">
+                    {error?.message}
+                  </span>
+                }
+              </div>
+            );
+          }}
+        />
+
+        <Controller
+          name="password"
+          control={control}
+          rules={{
+            required: "비밀번호를 입력해주세요",
+            minLength: {
+              value: 8,
+              message: '비밀번호를 8자 이상 입력해주세요'
+            }
+          }}
+          render = {({ field: { value, onChange }, fieldState: { error } }) => {
+            return (
+              <div className="input-item">
+                <label htmlFor="password">비밀번호</label>
+                <div className="input-wrapper">
+                  <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    placeholder="비밀번호를 입력해 주세요"
+                    value={value}
+                    onChange={onChange}
+                  />
+                  <button
+                    type="button"
+                    className="password-toggle-button"
+                    aria-label="비밀번호 보기"
+                  >
+                    <img
+                      className="password-toggle-icon"
+                      src={HideIcon}
+                      alt="비밀번호 숨김 상태 아이콘"
+                    />
+                  </button>
+                </div>
+                { error && 
+                  <span className="error-message">
+                    {error?.message}
+                  </span>
+                }
+              </div>
+            );
+          }}
+        />
 
         <button type="submit" className="button pill-button full-width">
           로그인

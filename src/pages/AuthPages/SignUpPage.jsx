@@ -5,7 +5,7 @@ import "./auth.css";
 import Logo from "../../assets/images/logo/logo.svg";
 import HideIcon from "../../assets/images/icons/eye-invisible.svg"
 
-function LoginPage() {
+function SignUpPage() {
   const {
     control,
     handleSubmit,
@@ -146,4 +146,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default SignUpPage;

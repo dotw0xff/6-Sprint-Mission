@@ -4,23 +4,18 @@ import LoginPage from "./pages/AuthPages/LoginPage";
 import MarketPage from "./pages/MarketPage/MarketPage";
 import AddItemPage from "./pages/AddItemPage/AddItemPage";
 import CommunityFeedPage from "./pages/CommunityFeedPage/CommunityFeedPage";
-import Header from "./components/Layout/Header";
 import ItemPage from "./pages/ItemPage/ItemPage";
 import PrivacyPolicy from "./pages/PrivacyPolicyPage/PrivacyPolicy";
 import FAQ from "./pages/FAQPage/FAQ";
 import SignUpPage from "./pages/AuthPages/SignUpPage";
+import MainLayout from "./components/Layout/MainLayout";
 
 function App() {
   return (
     <BrowserRouter>
-      {/* Global Navigation Bar */}
-      <Header />
-
-      <div className="withHeader">
-        <Routes>
+      <Routes>
+        <Route element={<MainLayout />}>
           <Route index element={<HomePage />} />
-          <Route path="login" element={<LoginPage />} />
-          <Route path="signup" element={<SignUpPage />} />
           <Route path="items" element={<MarketPage />} />
           <Route path="privacy" element={<PrivacyPolicy/>} />
           <Route path="faq" element={<FAQ/>} />
@@ -32,8 +27,12 @@ function App() {
           <Route path="items/:productId" element={<ItemPage />} />
           <Route path="additem" element={<AddItemPage />} />
           <Route path="community" element={<CommunityFeedPage />} />
-        </Routes>
-      </div>
+        </Route>
+        
+        <Route path="login" element={<LoginPage />} />
+        <Route path="signup" element={<SignUpPage />} />
+
+      </Routes>
     </BrowserRouter>
   );
 }

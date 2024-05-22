@@ -8,6 +8,7 @@ import Header from "./components/Layout/Header";
 import ItemPage from "./pages/ItemPage/ItemPage";
 import PrivacyPolicy from "./pages/PrivacyPolicyPage/PrivacyPolicy";
 import FAQ from "./pages/FAQPage/FAQ";
+import SignUpPage from "./pages/AuthPages/SignUpPage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route index element={<HomePage />} />
           <Route path="login" element={<LoginPage />} />
+          <Route path="signup" element={<SignUpPage />} />
           <Route path="items" element={<MarketPage />} />
           <Route path="privacy" element={<PrivacyPolicy/>} />
           <Route path="faq" element={<FAQ/>} />

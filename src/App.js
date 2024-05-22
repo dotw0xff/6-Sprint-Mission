@@ -6,6 +6,7 @@ import AddItemPage from "./pages/AddItemPage/AddItemPage";
 import CommunityFeedPage from "./pages/CommunityFeedPage/CommunityFeedPage";
 import Header from "./components/Layout/Header";
 import ItemPage from "./pages/ItemPage/ItemPage";
+import PrivacyPolicy from "./pages/PrivacyPolicyPage/PrivacyPolicy";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="items" element={<MarketPage />} />
+          <Route path="privacy" element={<PrivacyPolicy/>} />
           {/* 
             동적 라우팅 (Dynamic Routing)
             - `:` 뒤에 상품 아이디를 `path parameter`로 추가해주어 각 상품의 상세 페이지를 생성할 수 있어요.

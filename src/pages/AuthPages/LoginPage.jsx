@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./auth.css";
 import Logo from "../../assets/images/logo/logo.svg";
-import HideIcon from "../../assets/images/icons/eye-invisible.svg"
+import ShowIcon from "../../assets/images/icons/eye-invisible.svg"
+import HideIcon from "../../assets/images/icons/eye-visible.svg";
 import { Controller, useForm } from "react-hook-form";
 
 function LoginPage() {
@@ -16,6 +17,7 @@ function LoginPage() {
       password: "",
     },
   });
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const onSubmit = (data) => {
     console.log(JSON.stringify(data));
@@ -81,7 +83,7 @@ function LoginPage() {
                   <input
                     id="password"
                     name="password"
-                    type="password"
+                    type={isPasswordVisible ? "text" : "password"}
                     placeholder="비밀번호를 입력해 주세요"
                     value={value}
                     onChange={onChange}
@@ -89,12 +91,13 @@ function LoginPage() {
                   <button
                     type="button"
                     className="password-toggle-button"
-                    aria-label="비밀번호 보기"
+                    aria-label={`비밀번호 ${isPasswordVisible ? "보이기" : "가리기"}`}
+                    onClick={()=>setIsPasswordVisible(!isPasswordVisible)}
                   >
                     <img
                       className="password-toggle-icon"
-                      src={HideIcon}
-                      alt="비밀번호 숨김 상태 아이콘"
+                      src={ isPasswordVisible ? HideIcon : ShowIcon }
+                      alt={`비밀번호 ${isPasswordVisible ? "표시" : "숨김"} 상태 아이콘`}
                     />
                   </button>
                 </div>

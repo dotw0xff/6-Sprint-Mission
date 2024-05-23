@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Label } from "./InputItem";
 import styled, { css } from "styled-components";
-import { ReactComponent as PlusIcon } from "../../assets/images/icons/ic_plus.svg";
+import PlusIcon from "@/assets/images/icons/ic_plus.svg";
 import DeleteButton from "./DeleteButton";
 
 const ImageUploadContainer = styled.div`

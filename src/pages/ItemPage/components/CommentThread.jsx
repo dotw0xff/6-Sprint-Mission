@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { getProductComments } from "../../../api/itemApi";
+import { useEffect, useState } from "react";
+import { getProductComments } from "@/api/itemApi";
 import styled from "styled-components";
-import { ReactComponent as EmptyStateImage } from "../../../assets/images/ui/empty-comments.svg";
-import { ReactComponent as SeeMoreIcon } from "../../../assets/images/icons/ic_kebab.svg";
-// 참고: SVG 이미지 파일을 ReactComponent로 import하는 것을 추천하지만, DefaultProfileImage는 image source로 사용하기 위해 그대로 불러왔어요.
-import DefaultProfileImage from "../../../assets/images/ui/ic_profile.svg";
-import { LineDivider } from "../../../styles/CommonStyles";
-import { formatUpdatedAt } from "../../../utils/dateUtils";
+import EmptyStateImage from "@/assets/images/ui/empty-comments.svg";
+import SeeMoreIcon from "@/assets/images/icons/ic_kebab.svg";
+import DefaultProfileImage from "@/assets/images/ui/ic_profile.svg";
+import { LineDivider } from "@/styles/CommonStyles";
+import { formatUpdatedAt } from "@/utils/dateUtils";
 
 const CommentContainer = styled.div`
   padding: 24px 0;

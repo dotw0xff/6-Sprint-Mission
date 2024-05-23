@@ -1,8 +1,7 @@
-import React from "react";
 import styled from "styled-components";
-import { ReactComponent as HeartSvg } from "../../../assets/images/icons/ic_heart.svg";
-import { FlexContainer } from "../../../styles/CommonStyles";
-import Icon from "../../../components/UI/Icon";
+import HeartSvg from "@/assets/images/icons/ic_heart.svg";
+import { FlexContainer } from "@/styles/CommonStyles";
+import Icon from "@/components/UI/Icon";
 
 // 참고: 추후 요구사항에 따라 기능 추가 예정
 

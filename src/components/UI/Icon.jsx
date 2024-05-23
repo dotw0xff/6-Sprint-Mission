@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 // SVG 이미지 형식을 이용하는 큰 장점 중 하나는 비슷한 아이콘을 색상별로 저장할 필요 없이 하나의 파일로 유연하게 변경할 수 있다는 거예요.

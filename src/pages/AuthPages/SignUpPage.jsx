@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./auth.css";
-import Logo from "../../assets/images/logo/logo.svg";
-import ShowIcon from "../../assets/images/icons/eye-invisible.svg";
-import HideIcon from "../../assets/images/icons/eye-visible.svg";
+import Logo from "@/assets/images/logo/logo.svg";
+import ShowIcon from "@/assets/images/icons/eye-invisible.svg";
+import HideIcon from "@/assets/images/icons/eye-visible.svg";
 import { Controller, useForm } from "react-hook-form";
 
 function SignUpPage() {

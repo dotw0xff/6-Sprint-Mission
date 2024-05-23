@@ -10,7 +10,7 @@
   }
   
   #hero {
-    background-image: url("../../../public/images/home/hero-image.png");
+    background-image: url("../../../images/home/hero-image.png");
   }
   
   .banner h1 {
@@ -22,7 +22,7 @@
   }
   
   #bottomBanner {
-    background-image: url("../../../public/images/home/bottom-banner-image.png");
+    background-image: url("../../../images/home/bottom-banner-image.png");
   }
   
   #loginLink {

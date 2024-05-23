@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import InputItem from "./InputItem";
-import { FlexContainer } from "../../styles/CommonStyles";
+import { FlexContainer } from "@/styles/CommonStyles.js";
 import DeleteButton from "./DeleteButton";
 
 const TagButtonsSection = styled.div`

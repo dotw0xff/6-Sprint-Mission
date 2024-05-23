@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import { Container, LineDivider, StyledLink } from "../../styles/CommonStyles";
-import { getProductDetail } from "../../api/itemApi";
+import { Container, LineDivider, StyledLink } from "@/styles/CommonStyles";
+import { getProductDetail } from "@/api/itemApi";
 import ItemProfileSection from "./components/ItemProfileSection";
 import ItemCommentSection from "./components/ItemCommentSection";
-import { ReactComponent as BackIcon } from "../../assets/images/icons/ic_back.svg";
-import LoadingSpinner from "../../components/UI/LoadingSpinner";
+import BackIcon from "@/assets/images/icons/ic_back.svg";
+import LoadingSpinner from "@/components/UI/LoadingSpinner";
 
 const BackToMarketPageLink = styled(StyledLink)`
   display: flex;

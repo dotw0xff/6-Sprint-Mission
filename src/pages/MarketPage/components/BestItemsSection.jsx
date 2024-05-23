@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ItemCard from "./ItemCard";
-import { getProducts } from "../../../api/itemApi";
-import LoadingSpinner from "../../../components/UI/LoadingSpinner";
+import { getProducts } from "@/api/itemApi";
+import LoadingSpinner from "@/components/UI/LoadingSpinner";
 
 const getPageSize = () => {
   const width = window.innerWidth;

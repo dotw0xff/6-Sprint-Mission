@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { getProducts } from "../../../api/itemApi";
+import { useEffect, useState } from "react";
+import { getProducts } from "@/api/itemApi";
 import ItemCard from "./ItemCard";
-import { ReactComponent as SearchIcon } from "../../../assets/images/icons/ic_search.svg";
+import SearchIcon from "@/assets/images/icons/ic_search.svg";
 import { Link } from "react-router-dom";
-import DropdownMenu from "../../../components/UI/DropdownMenu";
-import PaginationBar from "../../../components/UI/PaginationBar";
-import LoadingSpinner from "../../../components/UI/LoadingSpinner";
+import DropdownMenu from "@/components/UI/DropdownMenu";
+import PaginationBar from "@/components/UI/PaginationBar";
+import LoadingSpinner from "@/components/UI/LoadingSpinner";
 
 const getPageSize = () => {
   const width = window.innerWidth;

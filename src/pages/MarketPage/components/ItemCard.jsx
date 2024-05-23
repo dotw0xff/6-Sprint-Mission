@@ -1,5 +1,4 @@
-import React from "react";
-import { ReactComponent as HeartIcon } from "../../../assets/images/icons/ic_heart.svg";
+import HeartIcon from "@/assets/images/icons/ic_heart.svg";
 import { Link } from "react-router-dom";
 
 function ItemCard({ item }) {

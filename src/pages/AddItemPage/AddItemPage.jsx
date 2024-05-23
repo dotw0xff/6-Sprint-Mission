@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Button,
   Container,
   FlexContainer,
   SectionTitle,
-} from "../../styles/CommonStyles";
+} from "@/styles/CommonStyles";
 import styled from "styled-components";
-import InputItem from "../../components/UI/InputItem";
-import TagInput from "../../components/UI/TagInput";
-import ImageUpload from "../../components/UI/ImageUpload";
+import InputItem from "@/components/UI/InputItem";
+import TagInput from "@/components/UI/TagInput";
+import ImageUpload from "@/components/UI/ImageUpload";
 
 const TitleSection = styled(FlexContainer)`
   margin-bottom: 16px;

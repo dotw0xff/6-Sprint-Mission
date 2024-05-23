@@ -1,9 +1,8 @@
-import React from "react";
 import styled from "styled-components";
-import { LineDivider } from "../../../styles/CommonStyles";
+import { LineDivider } from "@/styles/CommonStyles";
 import TagDisplay from "./TagDisplay";
 import LikeButton from "./LikeButton";
-import { ReactComponent as SeeMoreIcon } from "../../../assets/images/icons/ic_kebab.svg";
+import SeeMoreIcon from "@/assets/images/icons/ic_kebab.svg";
 
 const SectionContainer = styled.section`
   /* 모바일에선 이미지와 상세내용 섹션이 위아래로 배치되어 있다가, 타블렛부터는 같은 줄로 flex */

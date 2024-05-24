@@ -1,7 +1,11 @@
 import HeartIcon from "@/assets/images/icons/ic_heart.svg";
 import { Link } from "react-router-dom";
 
-function ItemCard({ item }) {
+type ItemCardProps = {
+  item: any;
+};
+
+function ItemCard({ item }: ItemCardProps) {
   return (
     // 상품 카드 클릭 시 해당 상품의 상세페이지로 이동
     <Link to={`/items/${item.id}`} className="itemCard">
@@ -14,7 +18,7 @@ function ItemCard({ item }) {
         <h2 className="itemName">{item.name}</h2>
         <p className="itemPrice">{item.price.toLocaleString()}원</p>
         <div className="favoriteCount">
-          <HeartIcon />
+          <img src={HeartIcon} alt="하트 아이콘" />
           {item.favoriteCount}
         </div>
       </div>

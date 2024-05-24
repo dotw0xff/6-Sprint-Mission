@@ -17,7 +17,7 @@
       "jsx": "react-jsx",
       "baseUrl": "./src",
       "paths": {
-        "@/*": ["*"],
+        "@/*": ["/*"],
         "@/components/*": ["components/*"],
         "@/assets/*": ["assets/*"],
         "@/styles/*": ["styles/*"],
@@ -25,6 +25,6 @@
         "@/utils/*": ["utils/*"]
       }
     },
-    "include": ["src"],
+    "include": ["src", "vite-env.d.ts"],
     "references": [{ "path": "./tsconfig.node.json" }]
   }

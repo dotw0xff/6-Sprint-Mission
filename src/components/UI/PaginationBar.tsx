@@ -2,7 +2,17 @@ import "./PaginationBar.css";
 import LeftArrow from "@/assets/images/icons/arrow_left.svg";
 import RightArrow from "@/assets/images/icons/arrow_right.svg";
 
-const PaginationBar = ({ totalPageNum, activePageNum, onPageChange }) => {
+type PaginationBarProps = {
+  totalPageNum: number;
+  activePageNum: number;
+  onPageChange: (pageNumber: number) => void;
+}
+
+const PaginationBar = ({
+  totalPageNum,
+  activePageNum,
+  onPageChange
+}: PaginationBarProps) => {
   const maxVisiblePages = 5;
   let startPage;
 
@@ -25,7 +35,7 @@ const PaginationBar = ({ totalPageNum, activePageNum, onPageChange }) => {
         disabled={activePageNum === 1}
         onClick={() => onPageChange(activePageNum - 1)}
       >
-        <LeftArrow />
+        <img src={LeftArrow} alt="왼쪽 화살표" />
       </button>
       {pages.map((page) => (
         <button
@@ -43,7 +53,7 @@ const PaginationBar = ({ totalPageNum, activePageNum, onPageChange }) => {
         disabled={activePageNum === totalPageNum}
         onClick={() => onPageChange(activePageNum + 1)}
       >
-        <RightArrow />
+        <img src={RightArrow} alt="오른쪽 화살표" />
       </button>
     </div>
   );

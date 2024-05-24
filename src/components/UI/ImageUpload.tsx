@@ -52,7 +52,11 @@ const UploadButton = styled.label`
   ${squareStyles}
 `;
 
-const ImagePreview = styled.div`
+type ImagePreviewProps = {
+  src: string;
+}
+
+const ImagePreview = styled.div<ImagePreviewProps>`
   background-image: url(${({ src }) => src});
   background-size: cover;
   background-position: center;
@@ -72,14 +76,18 @@ const HiddenFileInput = styled.input`
   display: none;
 `;
 
-function ImageUpload({ title }) {
+type ImageUploadProps = {
+  title: string;
+}
+
+function ImageUpload({ title }: ImageUploadProps) {
   const [imagePreviewUrl, setImagePreviewUrl] = useState("");
 
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
+  const handleImageChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+    const files = event.currentTarget.files;
+    if (files) {
       // 미리보기 주소 값(Object URL) 생성
-      const imageUrl = URL.createObjectURL(file);
+      const imageUrl = URL.createObjectURL(files[0]);
       setImagePreviewUrl(imageUrl);
     }
   };

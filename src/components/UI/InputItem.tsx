@@ -42,6 +42,16 @@ const TextArea = styled.textarea`
   resize: none; // 우측 하단 코너의 textarea 영역 크기 조절 기능을 없애줍니다
 `;
 
+type InputItemProps = {
+  id: string;
+  label: string;
+  value: string;
+  onChange: React.ChangeEventHandler<HTMLTextAreaElement | HTMLInputElement>;
+  placeholder: string;
+  onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
+  isTextArea?: boolean;
+}
+
 function InputItem({
   id,
   label,
@@ -50,7 +60,7 @@ function InputItem({
   placeholder,
   onKeyDown,
   isTextArea,
-}) {
+}: InputItemProps) {
   return (
     <div>
       {label && <Label htmlFor={id}>{label}</Label>}

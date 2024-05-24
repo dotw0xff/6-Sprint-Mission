@@ -2,27 +2,30 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./auth.css";
 import Logo from "@/assets/images/logo/logo.svg";
-import ShowIcon from "@/assets/images/icons/eye-invisible.svg"
+import ShowIcon from "@/assets/images/icons/eye-invisible.svg";
 import HideIcon from "@/assets/images/icons/eye-visible.svg";
 import { Controller, useForm } from "react-hook-form";
 
-function LoginPage() {
+function SignUpPage() {
   const {
     control,
+    watch,
     handleSubmit,
   } = useForm({
     mode: "onChange",
     defaultValues: {
       email: "",
+      nickname: "",
       password: "",
+      passwordConfirmation: "",
     },
   });
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isPasswordConfirmationVisible, setIsPasswordConfirmationVisible] = useState(false);
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: Object) => {
     console.log(JSON.stringify(data));
   }
-
   return (
     <div className="auth-container">
       <Link to="/" className="logo-home-link" aria-label="홈으로 이동">
@@ -32,7 +35,7 @@ function LoginPage() {
         />
       </Link>
 
-      <form id="loginForm" onSubmit={handleSubmit(onSubmit)}>
+      <form id="signupForm" onSubmit={handleSubmit(onSubmit)}>
         <Controller
           name="email"
           control={control}
@@ -51,6 +54,34 @@ function LoginPage() {
                   id="email"
                   name="email"
                   placeholder="이메일을 입력해주세요"
+                  value={value}
+                  onChange={onChange}
+                />
+
+                { error && 
+                  <span className="error-message">
+                    {error?.message}
+                  </span>
+                }
+              </div>
+            );
+          }}
+        />
+
+        <Controller
+          name="nickname"
+          control={control}
+          rules={{
+            required: "닉네임을 입력해주세요",
+          }}
+          render = {({ field: { value, onChange }, fieldState: { error } }) => {
+            return (
+              <div className="input-item">
+                <label htmlFor="nickname">닉네임</label>
+                <input
+                  id="nickname"
+                  name="nickname"
+                  placeholder="닉네임을 입력해주세요"
                   value={value}
                   onChange={onChange}
                 />
@@ -111,8 +142,54 @@ function LoginPage() {
           }}
         />
 
+        <Controller
+          name="passwordConfirmation"
+          control={control}
+          rules={{
+            minLength: {
+              value: 8,
+              message: "먼저 조건에 맞는 비밀번호를 입력해주세요",
+            },
+            validate: (value) => watch("password") === value || "비밀번호가 일치하지 않습니다.",
+          }}
+          render = {({ field: { value, onChange }, fieldState: { error } }) => {
+            return (
+              <div className="input-item">
+                <label htmlFor="passwordConfirmation">비밀번호</label>
+                <div className="input-wrapper">
+                  <input
+                    id="passwordConfirmation"
+                    name="passwordConfirmation"
+                    type={isPasswordConfirmationVisible ? "text" : "password"}
+                    placeholder="비밀번호를 입력해 주세요"
+                    value={value}
+                    onChange={onChange}
+                  />
+                  <button
+                    type="button"
+                    className="password-toggle-button"
+                    aria-label={`비밀번호 ${isPasswordConfirmationVisible ? "보이기" : "가리기"}`}
+                    onClick={()=>setIsPasswordConfirmationVisible(!isPasswordConfirmationVisible)}
+                  >
+                    <img
+                      className="password-toggle-icon"
+                      src={ isPasswordConfirmationVisible ? HideIcon : ShowIcon }
+                      alt={`비밀번호 ${isPasswordConfirmationVisible ? "표시" : "숨김"} 상태 아이콘`}
+                    />
+                  </button>
+                </div>
+                { error && 
+                  <span className="error-message">
+                    {error?.message}
+                  </span>
+                }
+              </div>
+            );
+          }}
+        />
+
         <button type="submit" className="button pill-button full-width">
-          로그인
+          회원가입
         </button>
       </form>
 
@@ -143,10 +220,10 @@ function LoginPage() {
       </div>
 
       <div className="auth-switch">
-        판다마켓이 처음이신가요? <Link to='/signup'>회원가입</Link>
+        이미 회원이신가요? <Link to="/login">로그인</Link>
       </div>
     </div>
-  );
+  )
 }
 
-export default LoginPage;
+export default SignUpPage;

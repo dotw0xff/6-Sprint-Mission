@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import CloseIcon from "@/assets/images/icons/ic_x.svg";
+import React from "react";
 
 const Button = styled.button`
   background-color: ${({ theme }) => theme.colors.gray[400]};
@@ -15,7 +16,15 @@ const Button = styled.button`
   }
 `;
 
-function DeleteButton({ onClick, label }) {
+type DeleteButtonProps = {
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  label: string;
+}
+
+function DeleteButton({
+  onClick,
+  label
+}: DeleteButtonProps) {
   return (
     <Button aria-label={`${label} 삭제`} onClick={onClick}>
       <CloseIcon />

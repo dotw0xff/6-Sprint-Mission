@@ -3,7 +3,13 @@ import styled from "styled-components";
 // SVG 이미지 형식을 이용하는 큰 장점 중 하나는 비슷한 아이콘을 색상별로 저장할 필요 없이 하나의 파일로 유연하게 변경할 수 있다는 거예요.
 // SVG 파일 내에 정의된 크기 또는 선 및 배경색을 동적으로 변경할 수 있는 컴포넌트를 만들어 볼게요.
 
-const IconWrapper = styled.div`
+type IconWrapperProps = {
+  $fillColor: string | null;
+  $size: number;
+  $outlineColor: string | null;
+}
+
+const IconWrapper = styled.div<IconWrapperProps>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -22,15 +28,20 @@ const IconWrapper = styled.div`
   }
 `;
 
-//
+type IconProps = {
+  iconComponent: any;
+  size: number;
+  fillColor: string | null;
+  outlineColor?: string | null;
+}
 const Icon = ({
   // props 객체에서 `iconComponent` 속성을 추출해 `IconComponent`라는 별칭(alias)로 사용할 수 있게 함
   // - 통일성을 위해 prop 이름에는 camelCase를 사용했지만, SVG를 ReactComponent 형태로 전달하고 있기 때문에 PascalCase으로 바꿔 사용
   iconComponent: IconComponent,
   size,
   fillColor,
-  outlineColor,
-}) => (
+  outlineColor = null,
+}: IconProps) => (
   <IconWrapper $size={size} $fillColor={fillColor} $outlineColor={outlineColor}>
     <IconComponent />
   </IconWrapper>

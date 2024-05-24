@@ -2,7 +2,13 @@ import { useState } from "react";
 import "./DropdownMenu.css";
 import SortIcon from "@/assets/images/icons/ic_sort.svg";
 
-function DropdownMenu({ onSortSelection }) {
+type DropdownMenuProps = {
+  onSortSelection: (sortOption: string) => void;
+}
+
+function DropdownMenu({
+  onSortSelection
+}: DropdownMenuProps) {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
 
   const toggleDropdown = () => {
@@ -12,7 +18,7 @@ function DropdownMenu({ onSortSelection }) {
   return (
     <div className="sortButtonWrapper">
       <button className="sortDropdownTriggerButton" onClick={toggleDropdown}>
-        <SortIcon />
+        <img src={SortIcon} alt="정렬 아이콘" />
       </button>
 
       {isDropdownVisible && (

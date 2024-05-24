@@ -22,8 +22,16 @@ const PillButton = styled.button`
 const ButtonContent = styled(FlexContainer)`
   gap: 4px;
 `;
-
-function LikeButton({ productId, isFavorite, favoriteCount }) {
+type LikeButtonProps = {
+  productId?: number;
+  isFavorite: boolean;
+  favoriteCount: number;
+}
+function LikeButton({
+  productId,
+  isFavorite,
+  favoriteCount
+}: LikeButtonProps) {
   return (
     <PillButton>
       <ButtonContent>
@@ -31,7 +39,7 @@ function LikeButton({ productId, isFavorite, favoriteCount }) {
         <Icon
           iconComponent={HeartSvg}
           size={24}
-          fillColor={isFavorite && "var(--red)"}
+          fillColor={isFavorite ? "var(--red)" : null}
         />
         {favoriteCount.toLocaleString()}
       </ButtonContent>

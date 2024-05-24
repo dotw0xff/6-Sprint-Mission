@@ -26,23 +26,23 @@ function AllItemsSection() {
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(getPageSize());
   const [itemList, setItemList] = useState([]);
-  const [totalPageNum, setTotalPageNum] = useState();
+  const [totalPageNum, setTotalPageNum] = useState<number>();
   const [isLoading, setIsLoading] = useState(true);
 
-  const fetchSortedData = async ({ orderBy, page, pageSize }) => {
+  const fetchSortedData = async ({ orderBy, page, pageSize }: any) => {
     setIsLoading(true);
     try {
-      const products = await getProducts({ orderBy, page, pageSize });
+      const products = await getProducts({ orderBy, page, pageSize } as unknown as URLSearchParams);
       setItemList(products.list);
       setTotalPageNum(Math.ceil(products.totalCount / pageSize));
     } catch (error) {
-      console.error("오류: ", error.message);
+      console.error("오류: ", (error as Error).message);
     } finally {
       setIsLoading(false);
     }
   };
 
-  const handleSortSelection = (sortOption) => {
+  const handleSortSelection = (sortOption: string) => {
     setOrderBy(sortOption);
   };
 
@@ -61,7 +61,7 @@ function AllItemsSection() {
     };
   }, [orderBy, page, pageSize]);
 
-  const onPageChange = (pageNumber) => {
+  const onPageChange = (pageNumber: number) => {
     setPage(pageNumber);
   };
 
@@ -79,7 +79,7 @@ function AllItemsSection() {
 
         <div className="allItemsSectionHeader">
           <div className="searchBarWrapper">
-            <SearchIcon />
+            <img src={SearchIcon} alt="검색 아이콘"/>
             <input
               className="searchBarInput"
               placeholder="검색할 상품을 입력해 주세요"
@@ -90,13 +90,13 @@ function AllItemsSection() {
 
         <div className="allItemsCardSection">
           {itemList?.map((item) => (
-            <ItemCard item={item} key={`market-item-${item.id}`} />
+            <ItemCard item={item} key={`market-item-${(item as any).id}`} />
           ))}
         </div>
 
         <div className="paginationBarWrapper">
           <PaginationBar
-            totalPageNum={totalPageNum}
+            totalPageNum={totalPageNum as number}
             activePageNum={page}
             onPageChange={onPageChange}
           />

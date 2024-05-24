@@ -8,7 +8,7 @@ import ItemCommentSection from "./components/ItemCommentSection";
 import BackIcon from "@/assets/images/icons/ic_back.svg";
 import LoadingSpinner from "@/components/UI/LoadingSpinner";
 
-const BackToMarketPageLink = styled(StyledLink)`
+const BackToMarketPageLink = styled(StyledLink)<{$pill: boolean;}>`
   display: flex;
   align-items: center;
   gap: 10px;
@@ -18,9 +18,9 @@ const BackToMarketPageLink = styled(StyledLink)`
 `;
 
 function ItemPage() {
-  const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   // react-router-dom의 useParams 훅을 사용해 URL의 path parameter(상품 아이디)를 가져오세요.
   // Route에서 정의한 path parameter의 이름과 useParams 훅에서 사용하는 변수명이 일치해야 정상적으로 추출돼요.
@@ -42,7 +42,7 @@ function ItemPage() {
         }
         setProduct(data);
       } catch (error) {
-        setError(error.message);
+        setError((error as Error).message);
       } finally {
         setIsLoading(false);
       }
@@ -75,9 +75,9 @@ function ItemPage() {
         - 요소에 해당 HTML 태그의 기본 속성이 아닌 것이 추가되면 콘솔창에 "unknown prop"이 전달되고 있다는 경고가 뜰 수 있어요.
         - prop 이름 앞에 `$`를 붙여주면 styled-components가 `transient props`로 인식하고 DOM 요소에 전달되지 않도록 필터링해요.
       */}
-        <BackToMarketPageLink $pill="true" to="/items">
+        <BackToMarketPageLink $pill={true} to="/items">
           목록으로 돌아가기
-          <BackIcon />
+          <img src={BackIcon} alt="뒤로가기 아이콘" />
         </BackToMarketPageLink>
       </Container>
     </>

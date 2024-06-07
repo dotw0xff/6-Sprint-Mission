@@ -1,0 +1,108 @@
+AddItemPage {
+    margin: 16px 32px;
+}
+
+.addItemContainer {
+    margin: 32px auto;
+    width: 800px;
+}
+.addItemMenu {
+    display: flex;
+    justify-content: space-between;
+}
+
+.addItemTitle {
+    font-family: 'Pretendard';
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 34px;
+}
+
+.addItemImageList {
+    display: flex;
+    flex-direction: column;
+}
+
+.addItemImageListDescription {
+    display: block;
+    font-family: 'Pretendard';
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22px;
+}
+
+.addItemImages {
+    display: flex;
+    flex-direction: row;
+}
+
+.addItemImages > * {
+    width: 282px;
+    height: 282px;
+    border: 1px solid #f9fafb;
+}
+
+.addItemImageRegistration {
+    background-color: #f3f4f6;
+    display: flex;
+    flex-direction: column;
+}
+
+.addItemImageRegistrationIcon {
+    margin: auto auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.addItemImageRegistrationIcon > AddIcon {
+    display: block;
+    width: 24px;
+    height: 24px;
+}
+
+.addItemImageRegistrationIcon > span {
+    display: block;
+}
+
+.inputBlock {
+    margin: 16px 0;
+}
+
+.inputBlock > label {
+    display: block;
+    margin-bottom: 16px;
+    font-size: 18px;
+    font-weight: 700px;
+    line-height: 21.48px;
+}
+
+.inputBlock > input {
+    width: 100%;
+    height: 56px;
+    border: none;
+    border-radius: 12px;
+    background-color: #f3f4f6;
+}
+
+.inputBlock > input:focus {
+    border-color: #3692ff;
+}
+
+.inputBlock > input:invalid {
+    border: red 1px solid;
+}
+
+.inputBlock > input::placeholder {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #9ca3af;
+}
+
+.largeInputBlock > input {
+    height: 112px;
+}
